@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface ConducteurService {
     ConducteurDTO saveConducteur(ConducteurDTO conducteur);
-    public void deleteConducteur(Long conducteurId);
+     void deleteConducteur(Long conducteurId);
     Permis savePermis(long conducteurId,TypePermis type,LocalDateTime dateExp) throws ConducteurNotFoundException;
 
 

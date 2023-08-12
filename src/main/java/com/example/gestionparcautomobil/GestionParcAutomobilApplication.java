@@ -43,7 +43,7 @@ public class GestionParcAutomobilApplication {
 
            // Voyage v =voyageService.PlanifierVoyage(localDateTime1,localDateTime2,"CatégorieA");
 
-             voyageService.AffectationConducteur(12, 1);
+           //  voyageService.AffectationConducteur(12, 1);
              //userService.getUsers(user);
             //userService.addRoleToUser("Manal","ADMIN");
          //   ConducteurDTO cond= conducteurService.getConducteur(1L);

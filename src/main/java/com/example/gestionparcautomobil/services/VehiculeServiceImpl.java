@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import lombok.Builder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 @Builder
 @Service
@@ -35,4 +36,10 @@ public class VehiculeServiceImpl implements VehiculeService {
     public List<Vehicule> listVehiculesByType(String TypeVehicule) {
        return vehiculeRepository.listVehiculeByType(TypeVehicule);
 
-}}
+}
+
+    @Override
+    public List<Vehicule> listeVehiculesDisponibles(LocalDateTime dateDebut, LocalDateTime dateFin) {
+        return vehiculeRepository.listVehiculeDisponnible(dateDebut,dateFin);
+    }
+}

@@ -2,10 +2,7 @@ package com.example.gestionparcautomobil.web;
 
 import com.example.gestionparcautomobil.dtos.ConducteurDTO;
 import com.example.gestionparcautomobil.entities.Conducteur;
-import com.example.gestionparcautomobil.exceptions.ConducteurNonDisponibleException;
-import com.example.gestionparcautomobil.exceptions.ConducteurNotFoundException;
-import com.example.gestionparcautomobil.exceptions.VehiculeNotFoundException;
-import com.example.gestionparcautomobil.exceptions.VoyageNotFoundException;
+import com.example.gestionparcautomobil.exceptions.*;
 import com.example.gestionparcautomobil.services.ConducteurService;
 import com.example.gestionparcautomobil.services.VoyageService;
 import lombok.AllArgsConstructor;
@@ -17,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @Slf4j
-public class ConducteurRestController {
+public class  ConducteurRestController {
     private ConducteurService conducteurService;
     private VoyageService voyageService;
 
@@ -40,14 +37,23 @@ public class ConducteurRestController {
     public void deleteConducteur(@PathVariable(name = "id") Long conducteurId) {
         conducteurService.deleteConducteur(conducteurId);
     }
-    @PostMapping("/api/v1/affectaionConducteurToVoyage")
-    public void affectationConducteur(@RequestBody ConducteurVehiculeForm conducteurVehiculeForm) throws ConducteurNotFoundException, VoyageNotFoundException, ConducteurNonDisponibleException {
-       voyageService.AffectationConducteur(conducteurVehiculeForm.getVoyageId(),conducteurVehiculeForm.getConducteurId());
+    @PostMapping("/api/v1/affectationConducteurToVoyage")
+    public void affectationConducteur(@RequestBody ConducteurVoyageForm conducteurVoyageForm) throws ConducteurNotFoundException, VoyageNotFoundException, ConducteurNonDisponibleException {
+       voyageService.AffectationConducteur(conducteurVoyageForm.getVoyageId(),conducteurVoyageForm.getConducteurId());
+    }
+    @PostMapping("/api/v1/affectationVehiculeToVoyage")
+    public void affectationVehicule(@RequestBody VehiculeVoyageForm vehiculeVoyageForm) throws VehiculeNotFoundException, VoyageNotFoundException, VehiculeNonDisponibleException {
+        voyageService.AffectationVehicule(vehiculeVoyageForm.getVoyageId(),vehiculeVoyageForm.getMatricule());
     }
 
 }
 @Data
- class ConducteurVehiculeForm{
+ class ConducteurVoyageForm{
     private  Long voyageId;
     private  Long conducteurId;
  }
+@Data
+class VehiculeVoyageForm{
+    private  Long voyageId;
+    private  String matricule;
+}

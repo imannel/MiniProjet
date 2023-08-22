@@ -6,7 +6,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ConducteurMapperImpl {
+public class    ConducteurMapperImpl {
     public ConducteurDTO fromConducteur(Conducteur conducteur){
         ConducteurDTO conducteurDTO=new ConducteurDTO();
         BeanUtils.copyProperties(conducteur,conducteurDTO);
